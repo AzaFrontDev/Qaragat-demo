@@ -1,0 +1,35 @@
+.booking {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  align-items: end;
+  background: rgba(20, 20, 20, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.field label {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #a1a1aa;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.field input, .field select {
+  width: 100%;
+  background: #18181b;
+  border: 1px solid #3f3f46;
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.field input:focus, .field select:focus {
+  border-color: #eab308; /* Твой золотой акцент */
+  outline: none;
+}

@@ -1,0 +1,15 @@
+<!-- BOOKING -->
+    <section class="section-sm">
+      <div class="container">
+        <form id="booking-form" class="booking">
+          <div class="field"><label data-i18n="booking.checkin">Заезд</label><input type="date" name="checkin" required /></div>
+          <div class="field"><label data-i18n="booking.checkout">Выезд</label><input type="date" name="checkout" required /></div>
+          <div class="field"><label data-i18n="booking.guests">Гости</label>
+            <select name="guests"><option>1</option><option selected>2</option><option>3</option><option>4</option></select>
+          </div>
+          <div class="field"><label data-i18n="booking.room">Номер</label><select name="room"></select></div>
+          <div class="field"><label data-i18n="booking.phone">Телефон</label><input type="tel" name="phone" required placeholder="+996 ..." /></div>
+          <button type="submit" class="btn btn-primary" data-i18n="booking.submit">Отправить заявку</button>
+        </form>
+      </div>
+    </section>

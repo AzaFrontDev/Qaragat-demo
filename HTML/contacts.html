@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Контакты — Отель «Qaragat»</title>
+    <meta name="description" content="Адрес, телефон и форма обратной связи отеля «Qaragat» в Джалал-Абаде." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../CSS/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container inner">
+        <a href="index.html" class="brand"><span class="brand-mark">Q</span><span class="brand-name">Qaragat</span></a>
+        <nav class="nav">
+        <a href="index.html" data-i18n="nav.index">Главная</a>
+         <a href="rooms.html" data-i18n="nav.rooms">Номера</a> 
+         <a href="gallery.html" data-i18n="nav.gallery">Галерея</a>
+         <a href="conference.html" data-i18n="nav.conference">Конференц-зал</a>
+         <a href="contacts.html" class="active" data-i18n="nav.contacts">Контакты</a>
+        </nav>
+        <div class="header-side">
+        <a href="contacts.html" class="btn btn-outline" style="padding:10px 20px;" data-i18n="nav.book">Забронировать</a>
+          <div class="lang">
+            <button type="button" data-lang="ru">RU</button><span>/</span><button type="button" data-lang="en">EN</button>
+          </div>
+          <button class="menu-toggle" aria-label="Menu"><span></span></button>
+        </div>
+      </div>
+    </header>
+
+    <div class="page-head container">
+      <div class="kicker" data-i18n="contacts.kicker">Контакты</div>
+      <h1 style="margin-top:16px;" data-i18n="contacts.title">Мы всегда рядом</h1>
+      <p data-i18n="contacts.subtitle">…</p>
+    </div>
+
+    <section class="container" style="padding-bottom:40px;">
+      <div class="info-grid">
+        <a class="info-card" href="https://www.openstreetmap.org/?mlat=40.9333&mlon=73.0000#map=13/40.9333/73.0000" target="_blank" rel="noreferrer">
+          <div class="ic">📍</div>
+          <div class="lbl" data-i18n="contacts.address">Адрес</div>
+          <div class="val" data-i18n="contacts.addressValue">г. Манас, ул. Э. Осмонова 39</div>
+        </a>
+        <a class="info-card" href="tel:+996223111111">
+          <div class="ic">📞</div>
+          <div class="lbl" data-i18n="contacts.phone">Телефон</div>
+          <div class="val" data-i18n="contacts.phoneValue">+996 (223) 111 111</div>
+        </a>
+        <a class="info-card" href="mailto:hotel@qaragat.kg">
+          <div class="ic">✉️</div>
+          <div class="lbl" data-i18n="contacts.email">Почта</div>
+          <div class="val" data-i18n="contacts.emailValue">hotel@qaragat.kg</div>
+        </a>
+        <div class="info-card">
+          <div class="ic">🕐</div>
+          <div class="lbl" data-i18n="contacts.hours">Часы работы</div>
+          <div class="val" data-i18n="contacts.hoursValue">Круглосуточно, 24/7</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" style="padding-bottom:80px;">
+      <div class="contacts-layout">
+        <div class="map-wrap">
+          <iframe title="map" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=72.98%2C40.92%2C73.02%2C40.95&layer=mapnik&marker=40.9333%2C73.0000"></iframe>
+        </div>
+        <form id="contact-form" class="form-card">
+          <h3 class="serif" data-i18n="contactForm.title">Напишите нам</h3>
+          <div class="form-grid">
+            <div class="field"><label data-i18n="contactForm.name">Имя</label><input type="text" name="name" required /></div>
+            <div class="field"><label data-i18n="contactForm.phone">Телефон</label><input type="tel" name="phone" required /></div>
+            <div class="field full"><label data-i18n="contactForm.email">Email</label><input type="email" name="email" required /></div>
+            <div class="field full"><label data-i18n="contactForm.message">Сообщение</label><textarea name="message" rows="5" required></textarea></div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top:22px;" data-i18n="contactForm.submit">Отправить</button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="brand"><span class="brand-mark">Q</span><span class="brand-name">Qaragat</span></div>
+            <p class="footer-tagline" data-i18n="footer.tagline">…</p>
+          </div>
+          <div>
+            <h5 data-i18n="footer.menu">Меню</h5>
+            <ul>
+              <li><a href="rooms.html" data-i18n="nav.rooms">Номера</a></li>
+              <li><a href="gallery.html" data-i18n="nav.gallery">Галерея</a></li>
+              <li><a href="conference.html" data-i18n="nav.conference">Конференц-зал</a></li>
+              <li><a href="contacts.html" data-i18n="nav.contacts">Контакты</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5 data-i18n="footer.contacts">Контакты</h5>
+            <ul>
+              <li data-i18n="contacts.addressValue">г. Манас, ул. Э. Осмонова 39</li>
+              <li><a href="tel:+996223111111" data-i18n="contacts.phoneValue">+996 (223) 111 111</a></li>
+              <li><a href="mailto:hotel@qaragat.kg" data-i18n="contacts.emailValue">hotel@qaragat.kg</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>© <span id="year"></span> Karagat Hotel. <span data-i18n="footer.rights">Все права защищены.</span></p>
+          <p>Jalal-Abad, Kyrgyzstan</p>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="../JS/main.js"></script>
+  </body>
+</html>

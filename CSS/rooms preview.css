@@ -1,0 +1,222 @@
+/* Контейнер и боковые отступы */
+.container-roomspreview {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.kicker-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 120px; /* Тот самый верхний отступ от предыдущего блока */
+  margin-bottom: 16px; /* Отступ снизу до h2 */
+}
+
+.kicker-rooms,
+.gold-link {
+  color: #D4AF37;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 0; 
+}
+
+.gold-link {
+  text-decoration: none; 
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.gold-link:hover {
+  opacity: 0.8; 
+  text-decoration: none;
+}
+
+.section-head h2,
+.section-head p {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.section-head p span, 
+.section-head h2 span {
+  font-weight: 600;
+  color: #D4AF37;
+}
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+/* Карточка */
+.room-card {
+  background: #121316;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  overflow: hidden; /* Обрезает картинку по скруглениям карточки */
+  display: flex;
+  flex-direction: column;
+  padding: 0; /* Убираем падинг, чтобы картинка липла к краям */
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.room-card:hover {
+  border-color: rgba(212, 175, 55, 0.3);
+  transform: translateY(-4px);
+}
+
+/* Картинка прилегает вплотную */
+.room-card__img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  /* Скругления только сверху, если overflow:hidden у .room-card вдруг перебьется */
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  overflow: hidden;
+}
+
+.room-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Бейдж в углу */
+.room-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: #D4AF37;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+/* Отступы возвращаем ТОЛЬКО контенту под картинкой */
+.room-card__content {
+  padding: 20px 20px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.room-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.room-card__title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.room-card__arrow {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.room-card:hover .room-card__arrow {
+  border-color: #D4AF37;
+  color: #D4AF37;
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.room-card__desc {
+  color: #8A8D93;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 12px 0 20px 0;
+  flex-grow: 1;
+}
+
+.room-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 14px;
+}
+
+.room-card__from {
+  color: #55575D;
+  font-size: 12px;
+  text-transform: lowercase;
+}
+
+.room-card__price {
+  color: #D4AF37;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 992px) {
+  /* Переводим сетку на 2 колонки */
+  .rooms-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important; /* Отступ между карточками, чтобы не слипались */
+    margin-top: 24px;
+  }
+
+  /* Контейнер тоже поджимаем, чтобы карточки не прилипали к краям экрана */
+  .container-roomspreview {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    box-sizing: border-box;
+  }
+
+  /* Делаем картинку или верх карточки квадратными (1 / 1) */
+  .room-card__img-wrap {
+    aspect-ratio: 1 / 1 !important;
+  }
+
+  /* Чуть уменьшаем заголовки и текст внутри карточек для мобилок */
+  .room-card__title {
+    font-size: 15px;
+  }
+
+  .room-card__desc {
+    font-size: 12px;
+    margin: 8px 0 12px 0;
+  }
+
+  .room-card__content {
+    padding: 14px 14px 12px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* На совсем узких экранах можно сделать шрифты чуть компактнее, но 2 в ряд останутся */
+  .room-card__price {
+    font-size: 14px;
+  }
+}
