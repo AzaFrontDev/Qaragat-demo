@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --accent: #c49a3b;
+    --accent-dark: #a3771f;
+    --text: #f5f1e8;
+    --text-dark: #1f1f1f;
+    --muted: #b8b0a1;
+    --bg: #0f1115;
+    --panel: #171a22;
+    --panel-2: #1d2130;
+    --border: rgba(255, 255, 255, 0.08);
+    --shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
+    color: var(--text);
+    background: black; 
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
