@@ -1,0 +1,301 @@
+
+.rooms-page-head.container,
+#rooms-list > .container,
+#room-detail > .container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.rooms-page-head {
+  padding: 130px 32px 40px;
+}
+
+.rooms-page-head h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.rooms-page-head p {
+  color: var(--muted);
+  margin-top: 16px;
+  max-width: 600px;
+  font-size: 1.1rem;
+}
+
+.rooms-catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+/* Карточка */
+.rooms-catalog-card {
+  background: #121316;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  overflow: hidden; /* Обрезает картинку по скруглениям карточки */
+  display: flex;
+  flex-direction: column;
+  padding: 0; /* Убираем падинг, чтобы картинка липла к краям */
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.rooms-catalog-card:hover {
+  border-color: rgba(212, 175, 55, 0.3);
+  transform: translateY(-4px);
+}
+
+/* Картинка прилегает вплотную */
+.rooms-catalog-card__image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  /* Скругления только сверху, если overflow:hidden у карточки перебьется */
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  overflow: hidden;
+}
+
+.rooms-catalog-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Бейдж в углу */
+.rooms-catalog-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  color: #D4AF37;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+/* Отступы возвращаем ТОЛЬКО контенту под картинкой */
+.rooms-catalog-card__content {
+  padding: 20px 20px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.rooms-catalog-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.rooms-catalog-card__title {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.rooms-catalog-card__link {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.rooms-catalog-card:hover .rooms-catalog-card__link {
+  border-color: #D4AF37;
+  color: #D4AF37;
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.rooms-catalog-card__description {
+  color: #8A8D93;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 12px 0 20px 0;
+  flex-grow: 1;
+}
+
+.rooms-catalog-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 14px;
+}
+
+.rooms-catalog-card__from {
+  color: #55575D;
+  font-size: 12px;
+  text-transform: lowercase;
+}
+
+.rooms-catalog-card__price {
+  color: #D4AF37;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 992px) {
+  .rooms-page-head.container,
+  #rooms-list > .container,
+  #room-detail > .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* Переводим сетку на 2 колонки */
+  .rooms-catalog-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 14px !important; /* Отступ между карточками, чтобы не слипались */
+    margin-top: 24px;
+  }
+
+  /* Делаем картинку или верх карточки квадратными (1 / 1) */
+  .rooms-catalog-card__image-wrap {
+    aspect-ratio: 1 / 1 !important;
+  }
+
+  /* Чуть уменьшаем заголовки и текст внутри карточек для мобилок */
+  .rooms-catalog-card__title {
+    font-size: 15px;
+  }
+
+  .rooms-catalog-card__description {
+    font-size: 12px;
+    margin: 8px 0 12px 0;
+  }
+
+  .rooms-catalog-card__content {
+    padding: 14px 14px 12px 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  /* На совсем узких экранах можно сделать шрифты чуть компактнее, но 2 в ряд останутся */
+  .rooms-catalog-card__price {
+    font-size: 12px;
+  }
+}
+
+/* =========================================================
+   ROOM DETAIL PAGE (Динамический рендер)
+   ========================================================= */
+
+/* Главное фото номера */
+.room-detail-hero {
+  width: 100%;
+  aspect-ratio: 21 / 9; 
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 50px;
+  border: 1px solid var(--border);
+  position: relative;
+}
+  
+.room-detail-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.room-detail-head .kicker {
+  text-align: center;
+  margin-bottom: 40px;
+  position: absolute;
+}
+
+.room-detail-head p {
+  color: var(--accent);
+  font-size: 24px;
+  text-align: center;
+}
+
+/* Сетка: Инфа слева, карточка брони справа */
+.split {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 60px;
+  align-items: start;
+  margin-bottom: 80px;
+}
+
+/* Боковая карточка с ценой */
+.form-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  position: sticky;
+  top: 100px; /* Залипает при скролле, не прячется под хедер */
+  box-shadow: var(--shadow);
+}
+
+.form-card .serif {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+/* Кнопка на всю ширину карточки */
+.btn-block {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* Вспомогательные классы из твоего JS */
+.serif {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 30px 0 0 0 !important;
+  justify-content: center;
+}
+
+.muted {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Адаптив под мобилки */
+@media (max-width: 900px) {
+  .split {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .room-detail-hero {
+    aspect-ratio: 16 / 10;
+    border-radius: 16px;
+    margin-bottom: 30px;
+  }
+  
+  .form-card {
+    position: static; /* На мобилках не залипает */
+    padding: 24px;
+  }
+}

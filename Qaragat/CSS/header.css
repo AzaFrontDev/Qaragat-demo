@@ -211,6 +211,11 @@
 
 @media (max-width: 992px) {
   /* Пересобираем десктопный флекс в мобильное выпадающее меню */
+
+  .header-side .btn {
+    display: none !important;
+  }
+  
   .nav {
     display: flex;
     flex-direction: column;

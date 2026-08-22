@@ -157,7 +157,7 @@ function initContactForm() {
 }
 
 /* =========================================================
-   Rooms grid rendering
+   Room catalog (index.html and rooms.html)
    ========================================================= */
 function initRoomsGrid() {
   const grids = document.querySelectorAll("[data-rooms-grid]");
@@ -165,38 +165,30 @@ function initRoomsGrid() {
 
   const render = () => {
     grids.forEach((grid) => {
-      const limit = parseInt(grid.dataset.limit || "0", 10) || rooms.length;
-      
-      grid.innerHTML = rooms.slice(0, limit).map((room) => {
-        const data = room[lang] || room.ru;
-        const priceFormatted = new Intl.NumberFormat(
-          lang === "ru" ? "ru-RU" : "en-US"
-        ).format(room.price);
-
+      grid.classList.add("rooms-page-grid");
+      grid.innerHTML = rooms.map((room) => {
+        const info = room[lang];
+        const price = new Intl.NumberFormat(lang === "ru" ? "ru-RU" : "en-US").format(room.price);
         return `
-          <div class="room-card">
-            <div class="room-card__img-wrap">
-              <img src="${room.image}" alt="${data.name}" class="room-card__img" loading="lazy" />
-              <div class="room-card__badge">${data.size} · ${data.guests}</div>
-            </div>
+          <article class="room-card">
+            <a class="room-card__img-wrap" href="rooms.html?id=${room.id}">
+              <img class="room-card__img" src="${room.image}" alt="${info.name}" />
+              <span class="room-card__badge">${info.size} · ${info.guests}</span>
+            </a>
             <div class="room-card__content">
               <div class="room-card__header">
-                <h3 class="room-card__title">${data.name}</h3>
-                <a href="/rooms.html?id=${room.id}" class="room-card__arrow" aria-label="${data.name}">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                  </svg>
-                </a>
+                <h2 class="room-card__title">${info.name}</h2>
+                <a class="room-card__arrow" href="rooms.html?id=${room.id}" aria-label="${info.name}">→</a>
               </div>
-              <p class="room-card__desc">${data.short}</p>
+              <p class="room-card__desc">${info.short}</p>
               <div class="room-card__footer">
                 <span class="room-card__from">${t("rooms.priceFrom")}</span>
-                <span class="room-card__price">${priceFormatted} ${t("rooms.currency")}</span>
+                <span class="room-card__price">${price} ${t("rooms.currency")}</span>
               </div>
             </div>
-          </div>
+          </article>
         `;
-      }).join('');
+      }).join("");
     });
   };
 
@@ -207,6 +199,28 @@ function initRoomsGrid() {
 /* =========================================================
    Room detail (rooms.html?id=xxx)
    ========================================================= */
+const amenityIcons = {
+  desk: '<path d="M4 19h16M7 19v-4h10v4M9 15V5h6v10M6 8h12" />',
+  safe: '<rect x="5" y="3" width="14" height="18" rx="2" /><circle cx="12" cy="12" r="3" /><path d="M12 9v3l2 1M8 6h.01M8 18h.01" />',
+  minibar: '<path d="M5 4h14v16H5zM5 9h14M8 6h.01M11 6h.01" />',
+  ac: '<rect x="3" y="5" width="18" height="8" rx="2" /><path d="M7 17h10M9 13v4M15 13v4M12 13v4" />',
+  tv: '<rect x="3" y="4" width="18" height="14" rx="2" /><path d="M8 21h8M12 18v3" />',
+  kitchen: '<path d="M4 20h16M6 20V5h12v15M9 8h6M9 12h6M9 16h2M14 16h1" />',
+};
+
+function getAmenityIcon(label) {
+  const value = label.toLowerCase();
+  const type = value.includes("стол") || value.includes("desk") ? "desk"
+    : value.includes("сейф") || value.includes("safe") ? "safe"
+    : value.includes("бар") || value.includes("bar") ? "minibar"
+    : value.includes("кондиционер") || value.includes("conditioning") ? "ac"
+    : value.includes("телевизор") || value === "tv" ? "tv"
+    : value.includes("кух") || value.includes("kitchen") ? "kitchen"
+    : null;
+
+  return type ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${amenityIcons[type]}</svg>` : "";
+}
+
 function initRoomDetail() {
   const wrap = document.querySelector("#room-detail");
   if (!wrap) return;
@@ -228,15 +242,27 @@ function initRoomDetail() {
   const render = () => {
     const info = room[lang];
     const price = new Intl.NumberFormat(lang === "ru" ? "ru-RU" : "en-US").format(room.price);
+    
+    const amenitiesHTML = info.amenities ? info.amenities.map(item => `
+      <div style="display: flex; align-items: center; gap: 10px; color: var(--muted);">
+        ${getAmenityIcon(item)}
+        <span style="font-size: 15px;">${item}</span>
+      </div>
+    `).join('') : '';
+
     wrap.innerHTML = `
-      <div class="page-head">
-        <div class="kicker">${info.size} · ${info.guests}</div>
+      <div class="room-detail-head">
         <h1 class="serif" style="margin-top:12px;">${info.name}</h1>
         <p>${info.short}</p>
       </div>
       <div class="container">
-        <div class="room-detail-hero"><img src="${room.image}" alt="${info.name}" /></div>
-        <div class="split">
+  <div class="room-detail-hero">
+    <img src="${room.image}" alt="${info.name}" />
+    <div class="kicker">${info.size} · ${info.guests}</div>
+  </div>
+  <div class="split">
+          
+          <!-- ЛЕВАЯ КОЛОНКА: Описание и иконки -->
           <div>
             <h2 class="serif">${lang === "ru" ? "О номере" : "About the room"}</h2>
             <p class="muted" style="margin-top:16px;font-size:16px;">${info.short}</p>
@@ -245,16 +271,32 @@ function initRoomDetail() {
                 ? "Каждая деталь в номере продумана для вашего комфорта: премиальные матрасы, звукоизоляция, кондиционер, безопасный сейф, чайная станция и халаты с тапочками."
                 : "Every detail is designed for your comfort: premium mattresses, sound insulation, air conditioning, in-room safe, tea station, bathrobes and slippers."}
             </p>
-          </div>
-          <div class="form-card">
-            <h3 class="serif">${lang === "ru" ? "Стоимость" : "Rate"}</h3>
-            <div style="display:flex;align-items:baseline;justify-content:space-between;padding:12px 0 20px;border-bottom:1px solid var(--border);">
-              <span class="muted" style="font-size:12px;letter-spacing:.2em;text-transform:uppercase;">${t("rooms.priceFrom")}</span>
-              <strong style="font-family:var(--serif);font-size:34px;color:var(--gold);">${price}</strong>
+            
+            <!-- Сетка удобств -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--border);">
+              ${amenitiesHTML}
             </div>
-            <p class="muted" style="font-size:13px;margin:16px 0 24px;">${t("rooms.currency")}</p>
-            <a href="/contacts.html" class="btn btn-primary btn-block">${t("nav.book")}</a>
           </div>
+          
+          <!-- ПРАВАЯ КОЛОНКА: Карточка цены и кнопка -->
+          <div class="form-card" style="background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 32px; position: sticky; top: 100px;">
+            <h3 class="serif" style="text-align: center; margin-bottom: 24px;">${lang === "ru" ? "Стоимость" : "Rate"}</h3>
+            
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 24px;">
+              <span class="muted" style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;">
+                ${t("rooms.priceFrom")}
+              </span>
+              <div style="display: flex; align-items: baseline; gap: 8px;">
+                <strong style="font-family: var(--font-serif); font-size: 38px; color: var(--accent); line-height: 1;">${price}</strong>
+                <span class="muted" style="font-size: 16px;">${t("rooms.currency")}</span>
+              </div>
+            </div>
+            
+            <a href="contacts.html" class="btn btn-primary btn-block" style="display: flex; align-items: center; justify-content: center; width: 100%; padding: 14px; font-weight: 600;">
+              ${t("nav.book")}
+            </a>
+          </div>
+          
         </div>
       </div>
     `;
@@ -262,6 +304,7 @@ function initRoomDetail() {
   render();
   document.addEventListener("langchange", render);
 }
+
 /* =========================================================
    Conference page rendering
    ========================================================= */
@@ -289,7 +332,7 @@ function initConference() {
    Gallery lightbox
    ========================================================= */
 function initGallery() {
-  const items = Array.from(document.querySelectorAll(".gallery-grid .item"));
+  const items = Array.from(document.querySelectorAll(".gallery-media-grid .item"));
   if (!items.length) return;
   const images = items.map((it) => ({
     src: it.querySelector("img").src,

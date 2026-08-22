@@ -34,7 +34,6 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  /* НИКАКИХ margin-left ТУТ! */
   border-radius: 50%;
   background: linear-gradient(135deg, rgb(255, 215, 0), #e6d5b8);
   color: #000000;

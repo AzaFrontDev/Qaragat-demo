@@ -1,4 +1,4 @@
-/* Karagat Hotel — flat i18n dictionaries. */
+/* Qaragat — flat i18n dictionaries. */
 export const dict = {
   ru: {
     "nav.index": "Главная",
@@ -49,7 +49,7 @@ export const dict = {
     "rooms.title": "Комфорт под <span>ваш</span> ритм",
     "rooms.subtitle": "Одноместные, двухместные и просторные люксы — выбирайте формат под <span>ваш</span> визит.",
     "rooms.priceFrom": "от",
-    "rooms.currency": "сом / ночь",
+    "rooms.currency": "сом",
     "rooms.viewAll": "Все номера",
 
     "gallery.kicker": "Галерея",
@@ -85,7 +85,7 @@ export const dict = {
     "contactForm.successTitle": "Спасибо!",
     "contactForm.successBody": "Мы свяжемся с вами в ближайшее время.",
 
-    "footer.tagline": "Отель «Qaragat» — тёплый приём и премиальный комфорт в сердце Ферганской долины.",
+    "footer.tagline": "Qaragat — тёплый приём и премиальный комфорт в сердце Ферганской долины.",
     "footer.menu": "Меню",
     "footer.contacts": "Контакты",
     "footer.rights": "Все права защищены.",
@@ -125,7 +125,7 @@ export const dict = {
 
     "about.kicker": "ABOUT",
     "about.title": "Modern Service with Local Character",
-    "about.body1": "Qaragat Hotel is designed for guests who value peace, consistently high service standards, and thoughtful details. We combine 4★ international hospitality with local warmth.",
+    "about.body1": "Qaragat is designed for guests who value peace, consistently high service standards, and thoughtful details. We combine 4★ international hospitality with local warmth.",
     "about.body2": "Conveniently located in the center of Manas, offering functional rooms, a private atmosphere, and everything needed for both work and rest.",
 
     "features.title": "Included in your stay",
@@ -143,7 +143,7 @@ export const dict = {
     "rooms.title": "Comfort at <span>your</span> pace",
     "rooms.subtitle": "Single, double and spacious suites — pick the format that fits <span>your</span> visit.",
     "rooms.priceFrom": "from",
-    "rooms.currency": "KGS / night",
+    "rooms.currency": "KGS",
     "rooms.viewAll": "All rooms",
 
     "gallery.kicker": "Gallery",
@@ -179,7 +179,7 @@ export const dict = {
     "contactForm.successTitle": "Thank you!",
     "contactForm.successBody": "We will get back to you shortly.",
 
-    "footer.tagline": "Qaragat Hotel — a warm welcome and premium comfort in the heart of Fergana Valley.",
+    "footer.tagline": "Qaragat — a warm welcome and premium comfort in the heart of Fergana Valley.",
     "footer.menu": "Menu",
     "footer.contacts": "Contacts",
     "footer.rights": "All rights reserved.",
@@ -199,13 +199,15 @@ export const rooms = [
       name: "Одноместный / Двухместный дабл", 
       short: "Уютный номер с двуспальной кроватью.", 
       size: "20 м²", 
-      guests: "1–2" 
-    },
+        guests: "1–2",
+        amenities: ["Рабочий стол", "Сейф", "Мини-бар", "Кондиционер", "Телевизор"]
+  },
     en: { 
       name: "Single / Double Room", 
       short: "Cozy room with a double bed.", 
       size: "20 m²", 
-      guests: "1–2" 
+      guests: "1–2",
+      amenities: ["Work desk", "Safe", "Mini-bar", "Air conditioning", "TV"]
     },
   },
   {
@@ -216,13 +218,15 @@ export const rooms = [
       name: "Двухместный твин", 
       short: "Две отдельные кровати для комфорта коллег.", 
       size: "24 м²", 
-      guests: "2" 
+      guests: "2",
+      amenities: ["Рабочий стол", "Сейф", "Мини-бар", "Кондиционер", "Телевизор"]
     },
     en: { 
       name: "Twin Room", 
       short: "Two separate beds for colleagues' comfort.", 
       size: "24 m²", 
-      guests: "2" 
+      guests: "2",
+      amenities: ["Work desk", "Safe", "Mini-bar", "Air conditioning", "TV"]
     },
   },
   {
@@ -233,13 +237,15 @@ export const rooms = [
       name: "Делюкс", 
       short: "Просторный номер с гостиной зоной.", 
       size: "34 м²", 
-      guests: "1–2" 
+      guests: "1–2",
+      amenities: ["Рабочий стол", "Сейф", "Мини-бар", "Кондиционер", "Телевизор"]
     },
     en: { 
       name: "Deluxe", 
       short: "Spacious room with a living area.", 
       size: "34 m²", 
-      guests: "1–2" 
+      guests: "1–2",
+      amenities: ["Work desk", "Safe", "Mini-bar", "Air conditioning", "TV"]
     },
   },
   {
@@ -250,13 +256,15 @@ export const rooms = [
       name: "Люкс", 
       short: "Флагманский люкс с панорамным видом.", 
       size: "48 м²", 
-      guests: "1–2" 
+      guests: "1–2",
+      amenities: ["Рабочий стол", "Сейф", "Мини-бар", "Кондиционер", "Телевизор", "Мини-кухня"]
     },
     en: { 
       name: "Suite", 
       short: "Flagship suite with panoramic views.", 
       size: "48 m²", 
-      guests: "1–3" 
+      guests: "1–3",
+      amenities: ["Work desk", "Safe", "Mini-bar", "Air conditioning", "TV", "Kitchenette"]
     },
   },
 ];

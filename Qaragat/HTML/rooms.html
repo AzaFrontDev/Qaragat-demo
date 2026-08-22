@@ -31,51 +31,58 @@
       </div>
     </header>
 
-    <!-- If ?id=xxx present, room-detail is rendered by JS and rooms-list is hidden -->
     <section id="room-detail"></section>
 
     <section id="rooms-list">
-      <div class="page-head container">
-        <div class="kicker" data-i18n="rooms.kicker">Категории номеров</div>
-        <h1 style="margin-top:16px;" data-i18n="rooms.title">Комфорт под ваш ритм</h1>
+      <div class="rooms-page-head container">
+        <div class="kicker" data-i18n="rooms.kicker">Номера отеля «Qaragat»</div>
+        <h1 style="margin-top:16px; color: #D4AF37" data-i18n="rooms.title">Премиальный комфорт</h1>
         <p data-i18n="rooms.subtitle">…</p>
       </div>
       <div class="container" style="padding-bottom:80px;">
-        <div class="rooms-grid" data-rooms-grid></div>
+        <div class="rooms-catalog-grid" data-rooms-grid></div>
       </div>
-    </section>
+    </section>  
 
     <footer class="site-footer">
-      <div class="container">
-        <div class="footer-grid">
-          <div>
-            <div class="brand"><span class="brand-mark">К</span><span class="brand-name">Карагат</span></div>
-            <p class="footer-tagline" data-i18n="footer.tagline">…</p>
-          </div>
-          <div>
-            <h5 data-i18n="footer.menu">Меню</h5>
-            <ul>
-              <li><a href="rooms.html" data-i18n="nav.rooms">Номера</a></li>
-              <li><a href="gallery.html" data-i18n="nav.gallery">Галерея</a></li>
-              <li><a href="conference.html" data-i18n="nav.conference">Конференц-зал</a></li>
-              <li><a href="contacts.html" data-i18n="nav.contacts">Контакты</a></li>
-            </ul>
-          </div>
-          <div>
-            <h5 data-i18n="footer.contacts">Контакты</h5>
-            <ul>
-              <li data-i18n="contacts.addressValue">г. Джалал-Абад, ул. Э. Осмонова 39</li>
-              <li><a href="tel:+996223111111" data-i18n="contacts.phoneValue">+996 (223) 111 111</a></li>
-              <li><a href="mailto:hotel@qaragat.kg" data-i18n="contacts.emailValue">hotel@qaragat.kg</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="copyright">
-          <p>© <span id="year"></span> Karagat Hotel. <span data-i18n="footer.rights">Все права защищены.</span></p>
-          <p>Jalal-Abad, Kyrgyzstan</p>
-        </div>
+  <div class="container-roomspreview"> 
+    
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="brand">
+          <span class="brand-mark">Q</span>
+          <span class="brand-name">Qaragat</span>
+        </a>
+        <p class="footer-tagline" data-i18n="footer.tagline">…</p>
       </div>
-    </footer>
+
+      <div>
+        <h5 data-i18n="footer.menu">Меню</h5>
+        <ul>
+          <li><a href="rooms.html" data-i18n="nav.rooms">Номера</a></li>
+          <li><a href="gallery.html" data-i18n="nav.gallery">Галерея</a></li>
+          <li><a href="conference.html" data-i18n="nav.conference">Конференц-зал</a></li>
+          <li><a href="contacts.html" data-i18n="nav.contacts">Контакты</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5 data-i18n="footer.contacts">Контакты</h5>
+        <ul>
+          <li data-i18n="contacts.addressValue">г. Манас, ул. Э. Осмонова 39</li>
+          <li><a href="tel:+996223111111" data-i18n="contacts.phoneValue">+996 (223) 111 111</a></li>
+          <li><a href="mailto:hotel@qaragat.kg" data-i18n="contacts.emailValue">hotel@qaragat.kg</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="copyright">
+      <p>© <span id="year"></span> Qaragat. <span data-i18n="footer.rights">Все права защищены.</span></p>
+      <p>Manas, Kyrgyzstan</p>
+    </div>
+
+  </div>
+</footer>
 
     <script type="module" src="../JS/main.js"></script>
   </body>

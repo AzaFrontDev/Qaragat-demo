@@ -1,4 +1,4 @@
-.booking {
+.conference-booking {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 16px;
@@ -10,7 +10,8 @@
   border-radius: 12px;
 }
 
-.field label {
+.conference-field label,
+.contacts-field label {
   display: block;
   font-size: 12px;
   text-transform: uppercase;
@@ -19,7 +20,11 @@
   letter-spacing: 0.5px;
 }
 
-.field input, .field select {
+.conference-field input,
+.conference-field select,
+.contacts-field input,
+.contacts-field select,
+.contacts-field textarea {
   width: 100%;
   background: #18181b;
   border: 1px solid #3f3f46;
@@ -29,7 +34,11 @@
   font-size: 14px;
 }
 
-.field input:focus, .field select:focus {
+.conference-field input:focus,
+.conference-field select:focus,
+.contacts-field input:focus,
+.contacts-field select:focus,
+.contacts-field textarea:focus {
   border-color: #eab308; /* Твой золотой акцент */
   outline: none;
 }
